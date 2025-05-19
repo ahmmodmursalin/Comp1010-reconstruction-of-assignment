@@ -1,16 +1,16 @@
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class Client {
-    public static void main(String[] args) {
+   public static void main(String[] args) throws IOException {
         System.out.println("==== Starting Staff and Channel System ====");
         System.out.println("\n-- Creating Staff Members --");
         System.out.println("Creating staff: Michael (Michael) Lay-Kujiraoka");
-        Staff staff1 = new Staff("Spenser");
+        Staff staff1 = new Staff("Spenser" , "s1");
         System.out.println("Staff 1 created: " + staff1.getName());
         System.out.println("Staff 1 channels: "
                 + (staff1.getChannels().isEmpty() ? "No channels assigned" : staff1.getChannels()));
 
-        Staff staff2 = new Staff("Kevin");
+        Staff staff2 = new Staff("Kevin" , "s2");
         System.out.println("Staff 2 created: " + staff2.getName());
         System.out.println("Staff 2 channels: "
                 + (staff2.getChannels().isEmpty() ? "No channels assigned" : staff2.getChannels()));
@@ -52,94 +52,33 @@ public class Client {
         System.out.println("playlist 2 videos" + playlist2.getVideos());
 
         System.out.println("In 'lecture notes' channel: Creating 12 videos (Week 1 to Week 12)");
+
+        System.out.println("--- Course ---");
+        System.out.println("Create course 1");
+        System.out.println("Add staff channels");
+
+        Course course1 = new Course("comp1000");
+        System.err.println("course 1 " + course1.getName());
+        course1.addStaffs(staff1);
+        System.out.println("course 1 " + course1.getStaffs());
+
+        Course course2 = new Course("comp1010");
+        System.err.println("course 2 " + course2.getName());
+        course2.addStaffs(staff2);
+        System.out.println("course 2 " + course2.getStaffs());
+
+        System.out.println("--- File IO ---");
+        System.out.println("Print all playlist from a course");
+        
+        course1.saveChannelsToCSV("educational video");
     }
 
 }
 
-class Staff {
-    private String name;
-    private ArrayList<Channel> channels;
 
-    public Staff(String name) {
-        this.name = name;
-        this.channels = new ArrayList();
-    }
 
-    public String getName() {
-        return this.name;
-    }
 
-    public ArrayList<Channel> getChannels() {
-        return this.channels;
-    }
 
-    public void createChannel(Channel channel) {
-        this.channels.add(channel);
-    }
-}
 
-class Channel {
-    private String name;
-    private ArrayList<Playlist> playlists;
 
-    public Channel(String name) {
-        this.name = name;
-        this.playlists = new ArrayList();
-    }
 
-    public String getChannel() {
-        return this.name;
-    }
-
-    public String toString() {
-        return this.name;
-    }
-
-    public void createPlaylist(Playlist playlists) {
-        this.playlists.add(playlists);
-    }
-
-    public ArrayList<Playlist> getPlaylists() {
-        return this.playlists;
-    }
-
-}
-
-class Playlist {
-    private String name;
-    private ArrayList<Video> videos;
-
-    public Playlist(String name) {
-        this.name = name;
-        this.videos = new ArrayList();
-
-    }
-
-    public ArrayList<Video> getVideos() {
-        return this.videos;
-    }
-
-    public void createVideo(Video videos) {
-        this.videos.add(videos);
-    }
-
-    public void createMultipleVidoes(ArrayList<Video> videos) {
-        this.videos.addAll(videos);
-    }
-}
-
-class Video {
-    private String name;
-
-    public Video(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public String toString() {
-        return this.name;
-    }
-}
