@@ -1,29 +1,26 @@
 import java.util.ArrayList;
 
-public class Student {
-    class User {
-        private String name;
-        private ArrayList<Channel> channels;
+public class Student extends User {
 
-        public User(String name) {
-            this.name = name;
-            this.channels = new ArrayList<Channel>();
-        }
+    public final ArrayList<Student> following;
 
-        public String getName() {
-            return this.name;
-        }
+    public Student(String name) {
+        super(name);
+        this.following = new ArrayList<>();
+    }
 
-        public String toString() {
-            return this.name;
+    public void follow(Student otherStudent) {
+        if (!following.contains(otherStudent)) {
+            following.add(otherStudent);
         }
+    }
 
-        public ArrayList<Channel> getChannels() {
-            return this.channels;
-        }
+    public ArrayList<Student> getFollowing() {
+        return this.following;
+    }
 
-        public void createChannel(Channel channel) {
-            this.channels.add(channel);
-        }
+    @Override
+    public String toString() {
+        return getName();
     }
 }

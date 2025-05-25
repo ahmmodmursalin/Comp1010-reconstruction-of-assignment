@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Channel {
-    private String name;
-    private ArrayList<Playlist> playlists;
+   public String name;
+    public ArrayList<Playlist> playlists;
 
     public Channel(String name) {
         this.name = name;
@@ -16,7 +16,7 @@ public class Channel {
     public String toString() {
         return this.name;
     }
-
+//
     public void createPlaylist(Playlist playlists) {
         this.playlists.add(playlists);
     }
