@@ -14,6 +14,7 @@ public class Video {
     }
 
     // returns video name as string (for printing)
+
     public String toString() {
         return this.name;
     }
