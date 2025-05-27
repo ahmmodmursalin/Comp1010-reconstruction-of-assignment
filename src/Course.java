@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class Course {
 
     // course name like comp1010
-    public final String name;
+    private String name;
 
     // list of staff linked to this course
-    public final ArrayList<Staff> staffs;
+    private ArrayList<Staff> staffs;
 
     // sets the course name and creates an empty staff list
     public Course(String name) {
         this.name = name;
-        this.staffs = new ArrayList<>();
+        this.staffs = new ArrayList<Staff>();
     }
 
     // returns the course name
