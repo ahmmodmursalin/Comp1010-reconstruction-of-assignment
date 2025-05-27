@@ -1,20 +1,25 @@
 import java.io.IOException;
 
 public class Client {
-   public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
+        
+        // starting the system
         System.out.println("==== Starting Staff and Channel System ====");
+
+        // creating staff members
         System.out.println("\n-- Creating Staff Members --");
         System.out.println("Creating staff: Michael (Michael) Lay-Kujiraoka");
-        Staff staff1 = new Staff("Spenser" , "s1");
+        Staff staff1 = new Staff("Spenser", "s1");
         System.out.println("Staff 1 created: " + staff1.getName());
-        System.out.println("Staff 1 channels: "
-                + (staff1.getChannels().isEmpty() ? "No channels assigned" : staff1.getChannels()));
+        System.out.println("Staff 1 channels: " + 
+            (staff1.getChannels().isEmpty() ? "No channels assigned" : staff1.getChannels()));
 
-        Staff staff2 = new Staff("Kevin" , "s2");
+        Staff staff2 = new Staff("Kevin", "s2");
         System.out.println("Staff 2 created: " + staff2.getName());
-        System.out.println("Staff 2 channels: "
-                + (staff2.getChannels().isEmpty() ? "No channels assigned" : staff2.getChannels()));
+        System.out.println("Staff 2 channels: " + 
+            (staff2.getChannels().isEmpty() ? "No channels assigned" : staff2.getChannels()));
 
+        // making channels for videos
         System.out.println("\n-- Creating Channels --");
         System.out.println("Creating a channel (Comp1010)...");
         Channel channel1 = new Channel("study helpers");
@@ -23,15 +28,17 @@ public class Client {
         Channel channel2 = new Channel("lecture notes");
         System.out.println("Channel 2 created: " + channel2.getChannel());
 
+        // assigning channels to each staff
         System.out.println("\n-- Assigning Channels to Staff --");
         staff1.createChannel(channel1);
         System.out.println("Added '" + channel1.getChannel() + "' channel to " + staff1.getName());
-        System.out.println("Staff 1 channels: " + (staff1.getChannels()));
+        System.out.println("Staff 1 channels: " + staff1.getChannels());
 
         staff2.createChannel(channel2);
         System.out.println("Added '" + channel2.getChannel() + "' channel to " + staff2.getName());
-        System.out.println("Staff 2 channels: " + (staff2.getChannels()));
+        System.out.println("Staff 2 channels: " + staff2.getChannels());
 
+        // organizing playlists
         System.out.println("\n-- Course Organization --");
         System.out.println("Comp1010 holds two playlists: 'Help Sessions' and 'Lectures'");
         Playlist playlist1 = new Playlist("Help Sessions");
@@ -39,20 +46,22 @@ public class Client {
         Playlist playlist2 = new Playlist("Lectures");
         System.out.println("playlist 2 " + playlist2.getVideos());
 
+        // adding some videos to help sessions
         playlist1.createVideo(new Video("how to study"));
         playlist1.createVideo(new Video("basics of java"));
         playlist1.createVideo(new Video("comp1000 recap"));
         playlist1.createVideo(new Video("what to come in comp1010"));
         System.out.println("playlist 1 videos" + playlist1.getVideos());
 
+        // adding 12 weekly lecture videos
         for (int i = 1; i <= 12; i++) {
-
             playlist2.createVideo(new Video("week " + i));
         }
         System.out.println("playlist 2 videos" + playlist2.getVideos());
 
         System.out.println("In 'lecture notes' channel: Creating 12 videos (Week 1 to Week 12)");
 
+        // creating course objects and linking staff
         System.out.println("--- Course ---");
         System.out.println("Create course 1");
         System.out.println("Add staff channels");
@@ -67,18 +76,9 @@ public class Client {
         course2.addStaffs(staff2);
         System.out.println("course 2 " + course2.getStaffs());
 
+        // saving channel info to a file
         System.out.println("--- File IO ---");
         System.out.println("Print all playlist from a course");
-        
         course1.saveChannelsToCSV("educational video");
     }
-
 }
-
-
-
-
-
-
-
-
