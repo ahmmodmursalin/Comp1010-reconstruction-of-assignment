@@ -1,0 +1,6 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar"
+  ]
+}
+// This file is used to configure the Java project settings in Visual Studio Code.
