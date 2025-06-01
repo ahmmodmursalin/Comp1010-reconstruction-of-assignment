@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Channel {
     // name of the channel
-    public String name;
+    private String name;
 
     // list that stores all the playlists in this channel
-    public ArrayList<Playlist> playlists;
+    private ArrayList<Playlist> playlists;
 
     // constructor sets the name and creates an empty list of playlists
     public Channel(String name) {
